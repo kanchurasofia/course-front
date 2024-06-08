@@ -1,0 +1,637 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color:#D7DECE;
+  display: flex;
+	justify-content: center;
+  justify-content:center
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+	--clr-primary: rgb(41, 145, 255);
+	--clr-lightGray: rgb(232, 232, 232);
+	--clr-light: #f4f4f4;
+	--clr-dark: rgb(58, 58, 58);
+	--clr-white: rgb(252, 252, 252);
+	--clr-warning: #e97560;
+	--clr-navHighlight: #4f7794d0;
+	--clr-mineShaft: #232323;
+	--clr-gallery: #ededed;
+	--clr-elfGreen: rgb(40, 53, 95);
+	--clr-nebula: #cbdbda;
+	--clr-completedTask: #a5b1c0;
+	--clr-delete: #ff494962;
+	--clr-highPriority: #ffc5c5;
+	--clr-mediumPriority: #ffe8cd;
+	--clr-lowPriority: #ceffd2;
+	--clr-dueDate: #878c92;
+}
+
+html {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* body {
+	padding-bottom: 10%;
+	margin: 0;
+	background: var(--clr-nebula);
+	color: var(--clr-mineShaft);
+	display: flex;
+	justify-content: center;
+} */
+
+h1 {
+	color: var(--clr-dark);
+	font-size: 3rem;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	align-items: center;
+	margin: -0.5em 0.5em 0.5em 40.5%;
+	z-index: 2;
+	position: absolute;
+}
+
+.hideH1 {
+	display: none;
+}
+
+
+.hidden {
+	display: none
+}
+
+#container {
+	margin-right: -18%;
+  justify-content: center;
+	margin-top: 50px;
+	padding-left: 1%;
+	display: grid;
+	justify-content: space-around;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	grid-template-areas: 
+	  "projects"
+	  "tasks"
+	  "logo";
+} 
+
+#gitLogoDivContainer {
+	grid-area: logo;
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	align-items: center;
+}
+
+.gitLogo {
+	width: 85px;
+	height: 85px;
+}
+
+#navContainer {
+	position: relative;
+	margin-bottom: 10vw;
+	grid-area: projects;
+}
+
+#menuToggle {
+	display: block;
+	position: relative;
+	max-width: 50vw;
+	top: 50px;
+	left: 50px;
+	z-index: 1;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#menuToggle li {
+	text-decoration: none;
+	-webkit-transition: color 0.3s ease;
+	-o-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+	padding: 10px 0px 10px 50px;
+	font-size: 22px;
+	display: flex;
+	align-items: center;
+}
+
+#menuToggle li:hover {
+	font-weight: 700;
+}
+
+
+/* The hamburger button hidden inside an #inputMenu element */
+#menuToggle #inputMenu {
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: -7px;
+	left: -5px;
+	padding: 0;
+	cursor: pointer;
+	
+	opacity: 0;
+	/* hide this */
+	z-index: 2;
+	/* and place it over the hamburger */
+	-webkit-touch-callout: none;
+}
+
+#menuToggle #labelMenu {
+	position: relative;
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+
+#menuToggle #labelMenu span {
+	display: none;
+}
+
+/*
+ * Hamburger
+ */
+#menuToggle #labelMenu div {
+	display: block;
+	width: 30px;
+	height: 2px;
+	margin-bottom: 6px;
+	position: relative;
+	background: var(--clr-elfGreen);
+	border-radius: 5px;
+	z-index: 1;
+	-webkit-transform-origin: 4px 0px;
+	-ms-transform-origin: 4px 0px;
+	transform-origin: 4px 0px;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+#menuToggle #labelMenu div:first-child {
+	-webkit-transform-origin: 0% 100%;
+	-ms-transform-origin: 0% 100%;
+	transform-origin: 0% 100%;
+}
+
+#menuToggle #labelMenu div:nth-child(2) {
+	-webkit-transform-origin: 0% 0%;
+	-ms-transform-origin: 0% 0%;
+	transform-origin: 0% 0%;
+}
+
+/* 
+ * Change the color of the hamburger when toggled
+ */
+#menuToggle #inputMenu:checked+#labelMenu div {
+	background: var(--clr-mineShaft);
+	
+}
+
+/*
+ * Use absolute positioning to place the menu off-screen
+ */
+#menu {
+	position: relative;
+	width: 100vw;
+	max-width: 900px;
+	margin: -80px 0 0 -50px;
+	padding: 50px 0px 50px 0px;
+	padding-top: 125px;
+	background: var(--clr-light);
+	box-shadow: 
+				0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+				0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+				0 12.5px 10px rgba(0, 0, 0, 0.06),
+				0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+				0 41.8px 33.4px rgba(0, 0, 0, 0.086);
+	border-radius: 20px;
+	list-style-type: none;
+	/* Hide the menu off-screen to the left */
+	left: 0;
+	-webkit-transition: left 0.3s ease;
+	-o-transition: left 0.3s ease;
+	transition: left 0.3s ease;
+}
+
+
+
+/*
+ * Slide the menu in from left when the #inputMenu is checked
+ */
+#menuToggle #inputMenu:checked~ul {
+
+	transition: left 0.3s ease;
+	left: -200%;
+}
+
+.list-name {
+	cursor: pointer;
+}
+
+.list-img {
+	width: 1.7em;
+	padding-right: 10px;
+}
+
+.active-list {
+	background-color: var(--clr-elfGreen);
+	border-radius: 35px;
+	margin: 0px 25px 0px 25px;
+	color: var(--clr-light);
+}
+
+#myForm {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1.8em;
+	transition: all 0.3s ease;
+	
+}
+
+#myForm form, #myTasks form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.3em;
+	background-color: var(--clr-white);
+	border: 1px solid var(--clr-elfGreen);
+	width: 15em;
+	padding: 2em .6em 1.5em .6em;
+	border-radius: 20px;
+}
+
+#addProjectForm {
+	display: flex;
+	justify-content: center;
+}
+
+#addProjectButton {
+	margin-top: 30px;
+	background-color: var(--clr-elfGreen);
+	color: var(--clr-light);
+	border: none;
+	border-radius: 0px;
+	font-size: 1.4em;
+	padding: 2% 10% 2% 8%;
+	font-family: 'Source Sans Pro', sans-serif;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s ease;
+}
+
+#addProjectButton:hover {
+	color: var(--clr-light);
+	opacity: 0.8;
+}
+
+#addProjectButton span {
+	font-size: 1.6em;
+	font-weight: 300;
+	padding: 0px 10px 0px 3px;
+	
+}
+
+#submitBtn, #taskSubmitButton {
+ 	font-family: 'Source Sans Pro', sans-serif;
+ 	background-color: var(--clr-elfGreen);
+ 	color: var(--clr-light);
+ 	border: none;
+ 	border-radius: 0px;
+ 	font-size: 1em;
+ 	padding: 2% 30% 2% 30%;
+	 transition: all 0.3s ease;
+}
+
+#submitBtn:hover, #taskSubmitBtn:hover {
+	opacity: 0.8;
+}
+
+#projectLabel, #taskLabel {
+	font-size: 1.3em;
+	font-weight: 700;
+}
+
+#projectInput, #taskInput {
+	font-size: 0.8em;
+	font-weight: 400;
+	font-family: 'Source Sans Pro', sans-serif;
+	border-radius: 15px;
+	padding: 0px 15px 0px 15px;
+}
+
+.deleteProjectBtn {
+	border: 1px solid var(--clr-mineShaft);
+	background: var(--clr-warning);
+	border-radius: 20px;
+	padding: 3px 7px 2px 7px;
+	font-size: 0.7em;
+	display: flex;
+	margin: 0.5% 2% 0 2%;
+	cursor: pointer;
+	font-weight: 300;
+}
+
+#taskList {
+	grid-area: tasks;
+}
+
+.todo-list {
+	transition: all 0.3s ease;
+	margin-top: 5em;
+	background: var(--clr-gallery);
+	border-radius: 20px;
+	width: 100vw;
+	max-width: 900px;
+	padding-top: 3%;
+	padding-bottom: 1%;
+	box-shadow: 
+				0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+				0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+				0 12.5px 10px rgba(0, 0, 0, 0.06),
+				0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+				0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+				0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.addMarginAfterClick {
+	margin-top: 26vh;
+	transition: all 0.3s ease;
+}
+
+.removeMarginAfterClick {
+	transform: translateY(-70%);
+	/* margin-top: -10vh; */
+	transition: all 0.3s ease;
+}
+
+
+.todo-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--clr-light);
+	border: 1px solid var(--clr-elfGreen);
+	border-radius: 20px;
+	margin: 0% 5% 5% 5%;
+}
+
+.task-count {
+	color: var(--clr-primary);
+}
+
+.todo-body {
+	background-color: var(--clr-light);
+	border: 1px solid var(--clr-elfGreen);
+	border-radius: 20px;
+	padding: 5% 1% 0% 1%;
+	margin: 5%;
+}
+
+
+
+#addTaskButton {
+	font-family: 'Source Sans Pro', sans-serif;
+ 	background-color: var(--clr-elfGreen);
+ 	color: var(--clr-light);
+ 	border: none;
+ 	border-radius: 0px;
+ 	font-size: 1.1em;
+ 	padding: 2% 10% 2% 4%;
+	 display: flex;
+	 align-items: center;
+	 margin-bottom: 20px;
+	 transition: all 0.3s ease;
+}
+
+#addTaskButton:hover {
+	opacity: 0.8;
+}
+
+#addTaskButton span {
+	font-size: 1.5em;
+	font-weight: 400;
+	padding: 0px 10px 0px 13px;
+}
+
+#createTaskContainer {
+	border-radius: 20px;
+	padding: 5%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+#tasksContainer {
+	border-radius: 20px;
+	margin-bottom: 15px;
+}
+
+#tasksContainer input[type="checkbox"] {
+	position: relative;
+	border: 2px solid var(--clr-mineShaft);
+	border-radius: 14px;
+	appearance: none;
+	outline: 0;
+	cursor: pointer;
+	transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+}
+
+#tasksContainer input[type="checkbox"]::before {
+	position: absolute;
+	content: '';
+	display: block;
+    top: -6px;
+    left: 9px;
+    width: 8px;
+    height: 21px;
+	border-style: solid;
+	border-color: var(--clr-mineShaft);
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+	opacity: 0;
+}
+
+#tasksContainer input[type="checkbox"]:checked {
+	color: var(--clr-mineShaft);
+	border-color: var(--clr-mineShaft);
+	background: var(--clr-primary);
+}
+
+#tasksContainer input[type="checkbox"]:checked::before {
+	opacity: 1;
+}
+
+#tasksContainer input[type="checkbox"]:checked ~ label::before {
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#tasksContainer label {
+	position: relative;
+	cursor: pointer;
+	font-size: 1.3em;
+	font-weight: 400;
+	padding: 0 0.45em 0;
+	user-select: none;
+}
+
+#tasksContainer label::before {
+	position: absolute;
+	content: attr(data-content);
+	color: var(--clr-completedTask);
+	clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+	text-decoration: line-through;
+	text-decoration-thickness: 3px;
+	text-decoration-color: var(--clr-dark);
+	top: 0px;
+	transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.task label {
+	bottom: 0px;
+}
+
+.task {
+	display: flex;
+	align-items: center;
+	border: 1px solid var(--clr-primary);
+	margin: 2%;
+	padding: 2%;
+	border-radius: 10px;
+}
+
+#tasksContainer .task input {
+	height: 25px;
+	width: 25px;
+	min-width: 25px;
+}
+
+#tasksContainer input:hover {
+	border: 2px solid var(--clr-primary);
+	transition: all 0.3s ease;
+}
+
+#noTasks{
+	font-size: 1.3em;
+}
+
+
+.high-priority {
+	background-color: var(--clr-highPriority);
+}
+
+.medium-priority {
+	background-color: var(--clr-mediumPriority);
+}
+
+.low-priority {
+	background-color: var(--clr-lowPriority);
+}
+
+#priorities, #dueDate{
+	border-radius: 5px;
+}
+
+#priorities, #dueDate {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.task-label-span {
+	font-size: 0.8em;
+	font-weight: 400;
+	padding: 0 0.45em 0;
+	user-select: none;
+	color: var(--clr-dueDate);
+}
+
+.delete-stuff {
+	display: flex;
+	flex-direction: column;}
+
+.delete-stuff button {
+	font-family: 'Source Sans Pro', sans-serif;
+	border: none;
+	margin: 0.5em;
+	border-radius: 12px;
+	font-size: 1em;
+	padding: 0.11em 1em 0.11em 1em;
+	transition: all 0.3s ease;
+}
+.delete-stuff button:hover {
+	opacity: 0.8;
+}
+
+
+#deleteBtn {
+	/* background-color: var(--clr-delete); */
+	color: var(--clr-mineShaft);
+}
+
+@media (min-width: 375px) {
+	#menu, #taskList {
+		width: 92vw;
+	}
+	#container {
+		margin-right: 0%;
+		margin-left: 0%;
+		padding-left: 1%;
+	}
+}
+
+@media (min-width: 768px) {
+	.todo-list{
+		margin-top: 7em;
+	}
+}
+
+@media (min-width: 1100px) {
+	#container {
+		margin-right: 0%;
+		margin-left: 0%;
+	}
+
+	.todo-list{
+		margin-top: 7em;
+	}
+
+}
+
+
+@media (min-width: 1800px) {
+	#container {
+		margin-right: 0%;
+		margin-left: 0%;
+	}
+
+	.todo-list{
+		margin-top: 2em;
+	}
+
+}
+
+
+.button-class-selected {
+	background-color: var(--clr-elfGreen);
+	border-radius: 35px;
+	margin: 0px 25px 0px 25px;
+	color: var(--clr-light);
+}
